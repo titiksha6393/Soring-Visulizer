@@ -1,3 +1,7 @@
+/////*****    THIS FILE IS NOT FUNCTIONAL AS I AM WORKING ON IT   *****/////
+
+
+
 export function getBubbleSortAnimations(array) {
     const animations = [];
     if (array.length <= 1) return array;
