@@ -1,32 +1,25 @@
-/////*****    THIS FILE IS NOT FUNCTIONAL AS I AM WORKING ON IT   *****/////
-
-
-
 export function getBubbleSortAnimations(array) {
     const animations = [];
     if (array.length <= 1) return array;
-    // mergeSortHelper(array, 0, array.length - 1, auxiliaryArray, animations);
-    bubbleSortHelper(array, array.length, animations);
-    return animations;
-}
-
-function bubbleSortHelper(array, len, animations) {
-
-    for (let i = 0; i < len; i++) {
-        for (let j = 0; j < (len - i - 1); j++) {
-            // These are the values that we're comparing; we push them once
-            // to change their color.
+    const auxiliaryArray = array.slice();
+    let len = auxiliaryArray.length;
+    for (var i = 0; i < len; i++) {
+        for (var j = 0; j < (len - i - 1); j++) {
             animations.push([j, j + 1]);
-            // These are the values that we're comparing; we push them a second
-            // time to revert their color.
             animations.push([j, j + 1]);
-            if (array[j] > array[j + 1]) {
-                animations.push([j + 1, j]);
-                let temp = array[j]
-                array[j] = array[j + 1]
-                array[j + 1] = temp
-                animations.push([j + 1, array[j]]);
+            if (auxiliaryArray[j] > auxiliaryArray[j + 1]) {
+                animations.push([j, auxiliaryArray[j + 1]]);
+                animations.push([j + 1, auxiliaryArray[j]]);
+                var temp = auxiliaryArray[j]
+                auxiliaryArray[j] = auxiliaryArray[j + 1]
+                auxiliaryArray[j + 1] = temp
+            }
+            else {
+                animations.push([j, auxiliaryArray[j]]);
+                animations.push([j + 1, auxiliaryArray[j + 1]]);
             }
         }
     }
+    // return auxiliaryArray;
+    return animations;
 }
